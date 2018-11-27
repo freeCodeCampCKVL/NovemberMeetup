@@ -25,31 +25,31 @@ namespace Employees.Api.Controllers
         // GET: api/Employee
         public IEnumerable<Models.Employee> Get()
         {
-            //From Database
-            string connStr = WebConfigurationManager.ConnectionStrings["EmployeeDBContext"].ConnectionString;
-            var connection = new SqlConnection(connStr);
-            using (connection)
-            {
-                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeDB.dbo.Employee", connection);
-                connection.Open();
+            ////From Database
+            //string connStr = WebConfigurationManager.ConnectionStrings["EmployeeDBContext"].ConnectionString;
+            //var connection = new SqlConnection(connStr);
+            //using (connection)
+            //{
+            //    SqlCommand command = new SqlCommand("SELECT * FROM EmployeeDB.dbo.Employee", connection);
+            //    connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    myDbEmployees.Add(new Models.Employee()
-                    {
-                        Id = (int)reader["Id"],
-                        FirstName = (string)reader["FirstName"],
-                        LastName = (string)reader["LastName"],
-                        Email = (string)reader["Email"],
-                        Gender = (string)reader["Gender"]
-                    });
-                }
+            //    SqlDataReader reader = command.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        myDbEmployees.Add(new Models.Employee()
+            //        {
+            //            Id = (int)reader["Id"],
+            //            FirstName = (string)reader["FirstName"],
+            //            LastName = (string)reader["LastName"],
+            //            Email = (string)reader["Email"],
+            //            Gender = (string)reader["Gender"]
+            //        });
+            //    }
 
-                reader.Close();
-                connection.Dispose();
-            }
-            //return myDbEmployees;
+            //    reader.Close();
+            //    connection.Dispose();
+            //}
+            ////return myDbEmployees;
 
             //From List
             return myListEmployees;
@@ -61,38 +61,38 @@ namespace Employees.Api.Controllers
             Models.Employee myEmployee = new Models.Employee();
             Models.Employee myDbEmployee = new Models.Employee();
 
-            //From Database
-            string connStr = WebConfigurationManager.ConnectionStrings["EmployeeDBContext"].ConnectionString;
-            var connection = new SqlConnection(connStr);
-            using (connection)
-            {
-                SqlCommand command = new SqlCommand("SELECT * FROM EmployeeDB.dbo.Employee", connection);
-                connection.Open();
+            ////From Database
+            //string connStr = WebConfigurationManager.ConnectionStrings["EmployeeDBContext"].ConnectionString;
+            //var connection = new SqlConnection(connStr);
+            //using (connection)
+            //{
+            //    SqlCommand command = new SqlCommand("SELECT * FROM EmployeeDB.dbo.Employee", connection);
+            //    connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    myDbEmployees.Add(new Models.Employee()
-                    {
-                        Id = (int)reader["Id"],
-                        FirstName = (string)reader["FirstName"],
-                        LastName = (string)reader["LastName"],
-                        Email = (string)reader["Email"],
-                        Gender = (string)reader["Gender"]
-                    });
-                }
+            //    SqlDataReader reader = command.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        myDbEmployees.Add(new Models.Employee()
+            //        {
+            //            Id = (int)reader["Id"],
+            //            FirstName = (string)reader["FirstName"],
+            //            LastName = (string)reader["LastName"],
+            //            Email = (string)reader["Email"],
+            //            Gender = (string)reader["Gender"]
+            //        });
+            //    }
 
-                reader.Close();
-                connection.Dispose();
-            }
-            myDbEmployee = (Models.Employee)myDbEmployees.Where(x => x.Id == id).FirstOrDefault();
-            //return myDbEmployees;
+            //    reader.Close();
+            //    connection.Dispose();
+            //}
+            //myDbEmployee = (Models.Employee)myDbEmployees.Where(x => x.Id == id).FirstOrDefault();
+            ////return myDbEmployees;
 
             //From List
             myEmployee = (Models.Employee)myListEmployees.Where(x => x.Id == id).FirstOrDefault();
 
 
-            return myDbEmployee;
+            return myEmployee;
         }
 
         // POST: api/Employee
