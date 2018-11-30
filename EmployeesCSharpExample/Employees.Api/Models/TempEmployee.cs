@@ -5,17 +5,8 @@ using System.Web;
 
 namespace Employees.Api.Models
 {
-    public interface IEmployee
-    {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string Email { get; set; }
-        string Gender { get; set; }
-        DateTime HireDate { get; set; }
-    }
+    public class TempEmployee : IEmployee
 
-    public class Employee
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -23,5 +14,6 @@ namespace Employees.Api.Models
         public string Email { get; set; }
         public string Gender { get; set; }
         public DateTime HireDate { get; set; }
+        public int PayRatePerHour { get; set; }
     }
 }
